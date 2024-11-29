@@ -1,0 +1,119 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--azUl);
+}
+
+main{
+    width: 97%;
+    height: auto;
+    margin: auto;
+    padding: 1em;
+    background-color: var(--ciNza);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    #formularioLogin{
+        margin: auto;
+        background: var(--azUl);
+        height: 440px;
+        color: var(--braNco);
+        font-family: sans-serif;
+        font-size: 1em;
+        text-align: center;
+        padding: 20px 20px 20px 20px;
+        border-radius: 12px;
+        display: block;
+    }
+    #formularioCadastro{
+        margin: auto;
+        background: var(--azUl);
+        padding: 30px;
+        width: 200px;
+        color: var(--braNco);
+        font-family: sans-serif;
+        border-radius: 12px;
+    }
+
+    /* ---------- */
+
+    /*.form-container {
+        border: 1px solid var(--prEto);
+        padding: 20px;
+        border-radius: 8px;
+        width: 350px;
+        background-color: var(--braNco);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }*/
+        .form-container h2 {
+            color: var(--azUl);
+            font-family: sans-serif;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 2em;
+        }
+        .form-container label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--braNco);
+            /*font-weight: bolder;*/
+        }
+        .form-container input {
+            width: 90%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid var(--prEto);
+            border-radius: 4px;
+            background-color: var(--ciNza);
+            color: var(--prEto);
+        }
+        .form-container input.error {
+            border-color: red;
+        }
+        .form-container .error-message {
+        color: red;
+        font-size: 12px;
+        margin-bottom: 10px;
+        }
+        .form-container button {
+            padding: 10px;
+            background-color: var(--azUl);
+            color: var(--braNco);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: var(--amaRelo);
+        }
+        .form-container button:disabled {
+            background-color: #ccc;
+        }
+        .password-rules {
+            margin-top: 10px;
+        }
+        .password-rules ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .password-rules li {
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        .password-rules li.valid {
+            color: green;
+        }
+        .password-rules li.invalid {
+            color: red;
+        }
+
+
+
+    

@@ -1,0 +1,99 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--azUl);
+}
+
+main{
+    width: 97%;
+    height: 85%;
+    margin: auto;
+    background-color: var(--ciNza);
+}
+
+#logo{
+    width: 100px;
+}
+
+#espacoLogo{
+    width: 787.2px;
+}
+
+.iconesEntrada{
+    width: 196px;
+    font-size: 1.5em;
+    line-height: 100px;
+    padding: 0px 25px;
+}
+
+#linkLogo{
+    background: none;
+    border: none;
+    padding: 0px;
+}
+
+/* Fim cabeçalho */
+
+/* Conteúdo*/
+main{
+    background: var(--ciNza);
+    padding: 20px;
+}
+
+.tituloConteudoTexto{
+    font-size: 1.7em;
+    color: var(--braNco);
+    background-color: var(--azul2);
+    border: solid var(--azul2) 10px;
+    border-radius: 10px;
+}
+
+.conteudoTexto{
+    font-size: 1.2em;
+}
+/* Fim conteúdo */
+
+/* Main do cadastro/ediçao de materila*/
+form {
+background-color: #ffffff;
+padding: 20px;
+border-radius: 5px;
+box-shadow: 0 0 10px #000000(0,0,0,0.1);
+}
+
+.bock{
+    display: block;
+}
+
+form label {
+display: inline;
+margin-bottom: 8px;
+}
+
+form textarea,
+form select {
+width: 100%;
+padding: 8px;
+margin-bottom: 12px;
+border: 1px solid #223140;
+border-radius: 4px;
+}
+
+form button {
+padding: 10px 20px;
+background-color: #223140;
+color: #ffffff;
+border: none;
+cursor: pointer;
+}
+
+form button:hover {
+background-color: #223140;
+}
+/* fim do Main do cadastro/ediçao de material*/

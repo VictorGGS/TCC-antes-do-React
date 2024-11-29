@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AXM - CADASTRO</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./CSS/loginCadastro.css">
+    <link rel="icon" href="./midia/LogoMPreto.ico">
+</head>
+<body>
+
+    <header>
+        <div class="loGo">
+            <img src="./Imagens/LogoBranco.png" alt="" width="50">
+        </div>
+        <div class="almoxarimax">
+            <h1 id="ALMOXARIMAX"><a href="indexHome.html" id="voltar">ALMOXARIMAX</a></h1>
+        </div>
+    </header>
+
+    <nav>
+        <div class="nAv">
+            <a href="login.html"><li>ENTRAR</li></a>
+            <a href="cadastro.html"><li>CADASTRAR</li></a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="form-container">
+            <h2>Cadastre-se</h2>
+            <form id="formularioCadastro">
+                <label for="razaoSocial">Digite sua razão social:</label>
+                <input type="text" id="razaoSocial" placeholder="xxxxxxxxx">
+                <div id="razaoSocialError" class="error-message"></div>
+                
+                <label for="nomeReduzido">Digite o nome reduzido:</label>
+                <input type="text" id="nomeReduzido" placeholder="Nome Reduzido">
+                <div id="nomeReduzidoError" class="error-message"></div>
+    
+                <label for="emailCadastro">Digite seu e-mail:</label>
+                <input type="email" id="emailCadastro" placeholder="xxxxxxxx@xxxx.com">
+                <div id="emailCadastroError" class="error-message"></div>
+                
+                <label for="cnpj">Digite seu CNPJ:</label>
+                <input type="text" id="cnpj" placeholder="00.000.000/0000-00" maxlength="18">
+                <div id="cnpjError" class="error-message"></div>
+                
+                <label for="inscricaoEstadual">Digite a inscrição estadual:</label>
+                <input type="text" id="inscricaoEstadual" placeholder="000.000.000.000">
+                <div id="inscricaoEstadualError" class="error-message"></div>
+    
+                <label for="telefone">Digite seu telefone:</label>
+                <input type="text" id="telefone" placeholder="(00) 00000-0000" maxlength="15">
+                <div id="telefoneError" class="error-message"></div>
+                
+                <label for="endereco">Digite seu endereço:</label>
+                <input type="text" id="endereco" placeholder="Rua Exemplo, 123, Bairro">
+                <div id="enderecoError" class="error-message"></div>
+    
+                <label for="senhaCadastro">Digite sua senha:</label>
+                <input type="password" id="senhaCadastro" placeholder="*********">
+                <div id="senhaCadastroError" class="error-message"></div>
+                
+                <label for="senhaCadastro2">Confirme sua senha:</label>
+                <input type="password" id="senhaCadastro2" placeholder="*********">
+                <div id="senhaCadastro2Error" class="error-message"></div>
+    
+                <div class="password-rules">
+                    <h3>Requisitos da Senha:</h3>
+                    <ul>
+                        <li id="ruleLength" class="invalid">Pelo menos 8 caracteres</li>
+                        <li id="ruleUpperCase" class="invalid">Pelo menos uma letra maiúscula</li>
+                        <li id="ruleLowerCase" class="invalid">Pelo menos uma letra minúscula</li>
+                        <li id="ruleNumber" class="invalid">Pelo menos um número</li>
+                        <li id="ruleSpecialChar" class="invalid">Pelo menos um caractere especial</li>
+                    </ul>
+                </div>
+                
+                <button type="submit">Cadastrar</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="fOOter">
+            <li class="iconeRodape"><img src="./midia/WhatsApp.png" alt="Whats" width="30"></li>
+            <li class="iconeRodape"><img src="./midia/iconelinkedin.png" alt="Linkedin" width="30"></li>
+            <li class="iconeRodape"><img src="./midia/e-mail.png" alt="I-meol" width="30"></li>
+            <li class="iconeRodape"><img src="./midia/telefone.png" alt="telefonar" width="30"></li>
+        </div>
+    </footer>
+
+    <script>
+        const form = document.getElementById('formularioCadastro');
+        const senhaInput = document.getElementById('senhaCadastro');
+        const confirmacaoSenhaInput = document.getElementById('senhaCadastro2');
+        const senhaRules = {
+            length: document.getElementById('ruleLength'),
+            upperCase: document.getElementById('ruleUpperCase'),
+            lowerCase: document.getElementById('ruleLowerCase'),
+            number: document.getElementById('ruleNumber'),
+            specialChar: document.getElementById('ruleSpecialChar')
+        };
+
+        function validateField(field, errorElement, condition, message) {
+            if (condition) {
+                errorElement.textContent = message;
+                field.classList.add('error');
+                return false;
+            } else {
+                errorElement.textContent = '';
+                field.classList.remove('error');
+                return true;
+            }
+        }
+
+        function updatePasswordRules() {
+            const senha = senhaInput.value;
+
+            const hasNumber = /\d/.test(senha);
+            const hasUpperCase = /[A-Z]/.test(senha);
+            const hasLowerCase = /[a-z]/.test(senha);
+            const hasSpecialChar = /[!@#$%^&*]/.test(senha);
+            const minLength = senha.length >= 8;
+
+            senhaRules.length.classList.toggle('valid', minLength);
+            senhaRules.length.classList.toggle('invalid', !minLength);
+
+            senhaRules.upperCase.classList.toggle('valid', hasUpperCase);
+            senhaRules.upperCase.classList.toggle('invalid', !hasUpperCase);
+
+            senhaRules.lowerCase.classList.toggle('valid', hasLowerCase);
+            senhaRules.lowerCase.classList.toggle('invalid', !hasLowerCase);
+
+            senhaRules.number.classList.toggle('valid', hasNumber);
+            senhaRules.number.classList.toggle('invalid', !hasNumber);
+
+            senhaRules.specialChar.classList.toggle('valid', hasSpecialChar);
+            senhaRules.specialChar.classList.toggle('invalid', !hasSpecialChar);
+        }
+
+        function validatePasswords() {
+            updatePasswordRules();
+
+            const senha = senhaInput.value;
+            const confirmacaoSenha = confirmacaoSenhaInput.value;
+
+            const passwordsMatch = senha === confirmacaoSenha;
+            document.getElementById('senhaCadastro2Error').textContent = passwordsMatch ? '' : 'As senhas não coincidem.';
+
+            return senhaInput.value.length >= 8 &&
+                   /[A-Z]/.test(senha) &&
+                   /[a-z]/.test(senha) &&
+                   /\d/.test(senha) &&
+                   /[!@#$%^&*]/.test(senha) &&
+                   passwordsMatch;
+        }
+
+        function validateCNPJ(cnpj) {
+            cnpj = cnpj.replace(/\D/g, '');
+
+            if (cnpj.length !== 14) return false;
+
+            const calculateDigit = (cnpj, factor) => {
+                let sum = 0;
+                for (let i = 0; i < cnpj.length - 2; i++) {
+                    sum += cnpj[i] * factor--;
+                    if (factor < 2) factor = 9;
+                }
+                let digit = sum % 11;
+                return digit < 2 ? 0 : 11 - digit;
+            };
+
+            const firstDigit = calculateDigit(cnpj, 5);
+            const secondDigit = calculateDigit(cnpj, 6);
+
+            return cnpj.endsWith(`${firstDigit}${secondDigit}`);
+        }
+
+        function validateForm() {
+            let isValid = true;
+
+            // Clear previous error messages
+            const errors = document.querySelectorAll('.error-message');
+            errors.forEach(error => error.textContent = '');
+
+            // Validate Razão Social
+            isValid &= validateField(document.getElementById('razaoSocial'), document.getElementById('razaoSocialError'), document.getElementById('razaoSocial').value.trim() === '', 'Razão Social é obrigatória.');
+
+            // Validate Nome Reduzido
+            isValid &= validateField(document.getElementById('nomeReduzido'), document.getElementById('nomeReduzidoError'), document.getElementById('nomeReduzido').value.trim() === '', 'Nome Reduzido é obrigatória.');
+
+            // Validate Email
+            isValid &= validateField(document.getElementById('emailCadastro'), document.getElementById('emailCadastroError'), document.getElementById('emailCadastro').value.trim() === '', 'Email é obrigatório.');
+
+            // Validate CNPJ
+            const cnpj = document.getElementById('cnpj').value;
+            isValid &= validateField(document.getElementById('cnpj'), document.getElementById('cnpjError'), !validateCNPJ(cnpj), 'CNPJ inválido.');
+
+            // Validate Inscrição Estadual
+            isValid &= validateField(document.getElementById('inscricaoEstadual'), document.getElementById('inscricaoEstadualError'), document.getElementById('inscricaoEstadual').value.trim() === '', 'Inscrição Estadual é obrigatória.');
+
+            // Validate Telefone
+            isValid &= validateField(document.getElementById('telefone'), document.getElementById('telefoneError'), document.getElementById('telefone').value.trim() === '', 'Telefone é obrigatório.');
+
+            // Validate Endereço
+            isValid &= validateField(document.getElementById('endereco'), document.getElementById('enderecoError'), document.getElementById('endereco').value.trim() === '', 'Endereço é obrigatório.');
+
+            // Validate Senha and Confirmacao Senha
+            isValid &= validatePasswords();
+
+            return isValid;
+        }
+
+        function formatTelefone(value) {
+            // Remove todos os caracteres não numéricos
+            value = value.replace(/\D/g, '');
+
+            // Adiciona o formato (XX) XXXXX-0000
+            if (value.length <= 10) {
+                value = value.replace(/(\d{2})(\d)/, '($1) $2');
+                value = value.replace(/(\d{5})(\d)/, '$1-$2');
+            } else {
+                value = value.replace(/(\d{2})(\d)/, '($1) $2');
+                value = value.replace(/(\d{5})(\d)/, '$1-$2');
+                value = value.replace(/(\d{4})(\d)/, '$1-$2');
+            }
+
+            return value;
+        }
+
+        function formatCNPJ(value) {
+            // Remove todos os caracteres não numéricos
+            value = value.replace(/\D/g, '');
+
+            // Adiciona o formato 00.000.000/0000-00
+            value = value.replace(/(\d{2})(\d)/, '$1.$2');
+            value = value.replace(/(\d{3})(\d)/, '$1.$2');
+            value = value.replace(/(\d{3})(\d)/, '$1/$2');
+            value = value.replace(/(\d{4})(\d)/, '$1-$2');
+
+            return value;
+        }
+
+        function handleInput(event) {
+            const input = event.target;
+            if (input.id === 'telefone') {
+                input.value = formatTelefone(input.value);
+            } else if (input.id === 'cnpj') {
+                input.value = formatCNPJ(input.value);
+            }
+        }
+
+        form.addEventListener('input', handleInput);
+        senhaInput.addEventListener('input', validatePasswords);
+        confirmacaoSenhaInput.addEventListener('input', validatePasswords);
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            if (validateForm()) {
+                alert('Cadastro realizado com sucesso!');
+                // Aqui você pode adicionar o código para enviar os dados do formulário
+                // Por exemplo, usando fetch ou XMLHttpRequest para enviar os dados para o servidor
+            }
+        });
+    </script>
+        
+</body>
+</html>

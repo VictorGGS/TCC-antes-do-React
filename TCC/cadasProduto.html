@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AXM.Home</title>
+    <link rel="stylesheet" href="./CSS/style.css">
+    <link rel="stylesheet" href="./CSS/cadasProduto.css">
+    <style>
+        .categorias-adicionadas {
+            margin-top: 10px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            max-height: 150px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            display: none; /* Oculta esta seção */
+        }
+        .categoria {
+            margin: 5px 0;
+        }
+        .unidade-medida {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    
+    <header>
+        <div class="loGo">
+            <img src="./Imagens/LogoBranco.png" alt="" width="50">
+        </div>
+        <div class="almoxarimax">
+            <h1 id="ALMOXARIMAX"><a href="" id="voltar">ALMOXARIMAX</a></h1>
+        </div>
+    </header>
+
+    <nav>
+        <div class="nAv">
+            <a href=""><li>ENTRAR</li></a>
+            <a href=""><li>CADASTRAR</li></a>
+        </div>
+    </nav>
+
+    <main class="main">
+        <div class="container">
+            <h2>Cadastre Seu Novo Produto</h2>
+            <br/>
+            <form id="formModa">
+                <label for="nome" class="bock">Nome do Produto:</label>
+                <input type="text" id="nome" name="nome" required>
+                <br/><br/>
+                <label for="descricao">Descrição:</label>
+                <textarea id="descricao" name="descricao" rows="4" required></textarea>
+                <br/>
+    
+                <label for="unidade">Unidade de Medida:</label>
+                <select id="selectUnidade" name="unidade" required>
+                    <option value="">Selecione uma unidade</option>
+                    <option value="Cx">Caixa (Cx)</option>
+                    <option value="M">Metro (M)</option>
+                    <option value="Cm">Centímetro (Cm)</option>
+                    <option value="Mm">Milímetro (mm)</option>
+                    <option value="Un">Unidade (Un)</option>
+                    <option value="Li">Litro (L)</option>
+                    <option value="Gm">Grama (g)</option>
+                    <option value="Ms">Massa (m)</option>
+                </select>
+                <br/>
+                
+                <p>Adicionar Nova Unidade de Medida:</p>
+                <input type="text" id="novaUnidade" name="novaUnidade" placeholder="Digite o nome da nova unidade">
+                <button type="button" id="addUnidade">Adicionar Unidade</button>
+                <br/><br/>
+                
+                <label for="limiteQuantidade">Limitar Quantidade para a Unidade Selecionada:</label>
+                <input type="number" id="limiteQuantidade" name="limiteQuantidade" min="0" placeholder="Digite o limite">
+                <br/><br/>
+                
+                <p>Escolha uma Categoria:</p>
+                <select id="selectCategoria" name="selectCategoria" required>
+                    <option value="">Selecione uma categoria</option>
+                    <option value="Eletrodomésticos">Eletrodomésticos</option>
+                    <option value="Móveis">Móveis</option>
+                    <option value="Alimentos">Alimentos</option>
+                    <option value="Vestuário">Vestuário</option>
+                    <option value="Limpeza">Limpeza</option>
+                </select>
+                <br/><br/>
+                
+                <label for="novaCategoria">Adicionar Nova Categoria:</label>
+                <input type="text" id="novaCategoria" name="novaCategoria" placeholder="Digite o nome da nova categoria">
+                <button type="button" id="addCategoria">Adicionar Categoria</button>
+                <br/><br/>
+
+                <div class="categorias-adicionadas" id="listaCategorias">
+                    <h4>Categorias Adicionadas:</h4>
+                    <ul id="listaCategoriasUl">
+                        <!-- Categorias pré-definidas -->
+                        <li class="categoria">Eletrodomésticos</li>
+                        <li class="categoria">Móveis</li>
+                        <li class="categoria">Alimentos</li>
+                        <li class="categoria">Vestuário</li>
+                        <li class="categoria">Limpeza</li>
+                    </ul>
+                </div>
+                
+             
+                
+                <input type="submit" value="Confirmar"/>
+                <input type="reset" value="Deletar"/>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="fOOter">
+            <li class="iconeRodape"><img src="./midia/WhatsApp.png" alt="Whats" width="30"></li>
+            <li class="iconeRodape"><img src="./midia/iconelinkedin.png" alt="Linkedin" width="30"></li>
+            <li class="iconeRodape"><img src="./midia/e-mail.png" alt="I-meol" width="30"></li>
+            <li class="iconeRodape"><img src="./midia/telefone.png" alt="telefonar" width="30"></li>
+        </div>
+    </footer>
+
+    <script>
+        // Função para adicionar nova categoria
+        document.getElementById('addCategoria').addEventListener('click', function() {
+            const novaCategoriaInput = document.getElementById('novaCategoria');
+            const novaCategoria = novaCategoriaInput.value.trim();
+
+            if (novaCategoria) {
+                // Adicionar a nova categoria ao select
+                const selectCategoria = document.getElementById('selectCategoria');
+                const optionCategoria = document.createElement('option');
+                optionCategoria.value = novaCategoria;
+                optionCategoria.textContent = novaCategoria;
+                selectCategoria.appendChild(optionCategoria);
+
+                // Limpar o campo de entrada
+                novaCategoriaInput.value = '';
+            } else {
+                alert('Por favor, digite o nome da categoria.');
+            }
+        });
+
+        // Função para adicionar nova unidade de medida
+        document.getElementById('addUnidade').addEventListener('click', function() {
+            const novaUnidadeInput = document.getElementById('novaUnidade');
+            const novaUnidade = novaUnidadeInput.value.trim();
+            const limiteQuantidadeInput = document.getElementById('limiteQuantidade').value.trim();
+
+            if (novaUnidade) {
+                // Adicionar a nova unidade ao select
+                const selectUnidade = document.getElementById('selectUnidade');
+                const optionUnidade = document.createElement('option');
+                optionUnidade.value = novaUnidade;
+                optionUnidade.textContent = novaUnidade;
+                selectUnidade.appendChild(optionUnidade);
+
+                // Adicionar a nova unidade e seu limite à lista
+                const listaUnidadesUl = document.getElementById('listaUnidadesUl');
+                const liUnidade = document.createElement('li');
+                liUnidade.className = 'unidade-medida';
+                liUnidade.textContent = `${novaUnidade} - Limite: ${limiteQuantidadeInput}`;
+                listaUnidadesUl.appendChild(liUnidade);
+
+                // Limpar os campos de entrada
+                novaUnidadeInput.value = '';
+                document.getElementById('limiteQuantidade').value = '';
+            } else {
+                alert('Por favor, digite o nome da unidade de medida.');
+            }
+        });
+
+        // Adiciona a funcionalidade de limitar quantidade ao enviar o formulário
+        document.getElementById('formModa').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio do formulário
+
+            const unidadeSelecionada = document.getElementById('selectUnidade').value;
+            const limiteQuantidade = document.getElementById('limiteQuantidade').value;
+
+            if (unidadeSelecionada && limiteQuantidade) {
+                alert(`Unidade: ${unidadeSelecionada}\nLimite de Quantidade: ${limiteQuantidade}`);
+                // Aqui você pode adicionar a lógica para armazenar ou usar a unidade e o limite
+            } else {
+                alert('Por favor, selecione uma unidade e defina um limite.');
+            }
+        });
+    </script>
+
+</body>
+</html>
